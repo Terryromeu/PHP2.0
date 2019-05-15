@@ -1,0 +1,14 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% set title = 'Add Comment' %}
+
+{% block content %}
+
+    {% include 'topic/_comment_form.html.twig' with {
+        form: form,
+        save_button_label: 'Add',
+        topic: topic,
+        cancel_button_link: path('topic_view', { topic: topic.id })
+    } only %}
+
+{% endblock %}

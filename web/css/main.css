@@ -1,0 +1,57 @@
+/* Nav */
+.nav .nav-logged-user .nav-item {
+    padding-right: 2px;
+    padding-left: 2px;
+}
+.nav .nav-logged-user .nav-item span.icon {
+    margin-right: 5px;
+}
+.nav .nav-logged-user a,
+.nav .nav-logged-user a:hover {
+    text-decoration: none;
+}
+
+
+/* Forms */
+.control.inline .radio, .control.inline .checkbox {
+    line-height: 2.15;
+}
+.select-multiple {
+    height: auto;
+}
+.select-multiple::after {
+    border: none;
+}
+.select-multiple select {
+    height: auto;
+    border-image: none;
+    padding: 5px 9px;
+}
+
+.profile, .links {
+    clear: both;
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+    font-size: 13px;
+}
+.breadcrumbs .separator {
+    padding: 0 3px;
+}
+.breadcrumbs a:hover {
+    text-decoration: underline;
+    color: #00d1b2;
+}
+.breadcrumbs .separator .fa {
+    vertical-align: baseline;
+    color: #5a5a5a;
+}
+
+/* Table */
+table.table {
+    color: #5a5a5a;
+}
+table.table thead td {
+    font-weight: 500;
+}

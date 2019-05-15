@@ -1,0 +1,45 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block content %}
+    <div class="block">
+        <a class="button is-primary" href="{{ path('topic_add', {category: category.id}) }}">Create Topic</a>
+    </div>
+
+    <table class="table is-bordered topic-list">
+        <thead>
+        <tr>
+            <td>Topic</td>
+            <td>Last Comment</td>
+            <td>Comments</td>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for topic in topics %}
+            <tr>
+                <td class="topic">
+                    <a href="{{ path('topic_view', { topic: topic.id }) }}">{{ topic.title }}</a> <br>
+                    by <b>{{ topic.user.username }}</b>
+                </td>
+
+                <td class="last-comment">
+                    {% include 'partials/_last_comment.html.twig' with {
+                        lastComment: topic.comments|first,
+                        hideTopic: true
+                    } only %}
+                </td>
+
+                <td>{{ topic.comments|length }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {% include 'partials/_pagination.html.twig' with {
+        paginator: topics,
+        currentPage: currentPage,
+        itemsPage: maxTopicsPage,
+        uri: path('category_topics', { category: category.id }) ~ '?page='
+    } only %}
+
+{% endblock %}

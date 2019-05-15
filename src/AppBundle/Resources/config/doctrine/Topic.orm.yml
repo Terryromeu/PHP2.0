@@ -1,0 +1,50 @@
+AppBundle\Entity\Topic:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\TopicRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+        categoryId:
+            type: integer
+            nullable: true
+            column: category_id
+        userId:
+            type: integer
+            column: user_id
+        createdAt:
+            type: datetime
+            nullable: true
+            column: created_at
+        updatedAt:
+            type: datetime
+            nullable: true
+            column: updated_at
+    lifecycleCallbacks: {  }
+    manyToOne:
+        category:
+            targetEntity: TopicCategory
+            joinColumn:
+                name: category_id
+                referencedColumnName: id
+            fetch: EAGER
+        user:
+            targetEntity: User
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+            fetch: EAGER
+    oneToMany:
+        comments:
+            targetEntity: TopicComment
+            mappedBy: topic
+            fetch: EXTRA_LAZY
+            orderBy: { 'createdAt': 'DESC' }
+            cascade: ['persist']

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ (title|default(false)) ? title~' - Symfony Forum':'Symfony Forum' }}</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.1/css/bulma.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/web.css') }}" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    {% include 'partials/_navigation.html.twig' %}
+</div>
+
+<section class="section">
+    <div class="container">
+
+        {% if breadcrumbs is defined and breadcrumbs %}
+            {% include 'partials/_breadcrumbs.html.twig' %}
+        {% endif %}
+
+        {% if title is defined %}
+            <h1 class="title is-1">{{ title }}</h1>
+        {% endif %}
+
+        {% block content %}{% endblock %}
+    </div>
+</section>
+
+{% include 'partials/_footer.html.twig' %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="{{ asset('js/main.js') }}"></script>
+</body>
+</html>

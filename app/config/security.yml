@@ -1,0 +1,30 @@
+security:
+
+    encoders:
+        AppBundle\Entity\User: bcrypt
+
+    providers:
+        database_users:
+            entity:
+                class: AppBundle:User
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            anonymous: ~
+
+            guard:
+                authenticators:
+                    - app.form_login_authenticator
+            logout:
+                path: logout
+                target: homepage
+
+    role_hierarchy:
+        ROLE_USER: [ROLE_USER]
+
+    access_control:
+        - { path: ^/profile, roles: ROLE_USER}

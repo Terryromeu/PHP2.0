@@ -1,0 +1,15 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% set title = 'Add Topic' %}
+
+{% block content %}
+
+    {% set cancel_url = (categoryId) ? path('category_topics', { category: categoryId }) : path('homepage')  %}
+
+    {% include 'topic/_topic_form.html.twig' with {
+        form: form,
+        save_button_label: 'Create',
+        cancel_button_link: cancel_url
+    } only %}
+
+{% endblock %}
